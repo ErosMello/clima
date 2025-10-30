@@ -1,20 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clima</title>
+    <meta name="description" content="Consulte o clima atual de qualquer cidade do mundo">
+    <title>Clima Atual - Previsão do Tempo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="weather-app">
-        <h1>Clima Atual</h1>
-        <input type="text" id="city-input" placeholder="Digite o nome da cidade" />
-        <button id="search-button">Buscar</button>
-        <div id="weather-info"></div>
-    </div>
+    <main class="weather-app">
+        <h1>
+            <i class="fas fa-cloud-sun"></i>
+            Clima Atual
+        </h1>
+        <form id="search-form" role="search" class="search-container">
+            <label for="city-input" class="visually-hidden">Buscar cidade</label>
+            <div class="input-group">
+                <i class="fas fa-search search-icon"></i>
+                <input 
+                    type="search" 
+                    id="city-input" 
+                    name="city"
+                    placeholder="Digite o nome da cidade" 
+                    aria-label="Nome da cidade"
+                    autocomplete="off"
+                    required
+                />
+            </div>
+            <button type="submit" id="search-button">
+                <i class="fas fa-search"></i>
+                <span>Buscar</span>
+            </button>
+        </form>
+
+        <div id="recent-searches" class="recent-searches" aria-live="polite">
+            <!-- Histórico recente será inserido aqui -->
+        </div>
+
+        <div id="weather-info" class="weather-card" aria-live="polite">
+            <!-- Conteúdo do clima será inserido aqui -->
+        </div>
+
+        <footer class="app-footer">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+            <small>Dados fornecidos por OpenWeather</small>
+        </footer>
+    </main>
     <script src="script.js"></script>
 </body>
 

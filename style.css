@@ -1,47 +1,290 @@
-body {
-    font-family: Arial, sans-serif;
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --background-light: #f8fafc;
+    --text-light: #1e293b;
+    --card-light: rgba(255, 255, 255, 0.9);
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --gradient-light: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+    
+    --transition-speed: 0.3s;
+}
+
+.dark-theme {
+    --primary-color: #3b82f6;
+    --primary-hover: #60a5fa;
+    --background-light: #0f172a;
+    --text-light: #f8fafc;
+    --card-light: rgba(30, 41, 59, 0.9);
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --gradient-light: linear-gradient(135deg, #1e293b, #0f172a, #020617);
+}
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--gradient-light);
+    color: var(--text-light);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(to bottom, #ffffff, #e6881edc, #8529ff, #000000);
-    color: white;
+    padding: 20px;
+    transition: background-color var(--transition-speed);
 }
 
 .weather-app {
-    text-align: center;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    background: var(--card-light);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px var(--shadow-light);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+}
+
+.search-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+}
+
+input[type="search"] {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border: 2px solid #e2e8f0;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 300px;
+    font-size: 1rem;
+    background: var(--background-light);
+    color: var(--text-light);
+    transition: all var(--transition-speed);
 }
 
-input, button {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: none;
-    font-size: 16px;
-}
-
-input {
-    width: calc(100% - 22px);
+input[type="search"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 button {
-    background-color: #0984e3;
+    background: var(--primary-color);
     color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
     cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     width: 100%;
+    transition: all var(--transition-speed);
 }
 
 button:hover {
-    background-color: #74b9ff;
+    background: var(--primary-hover);
+    transform: translateY(-1px);
 }
 
-#weather-info {
-    margin-top: 20px;
+.recent-searches {
+    margin: 1.5rem 0;
+}
+
+.recent-searches h3 {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.recent-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.recent-city {
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    color: var(--text-light);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
+}
+
+.recent-city:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.weather-card {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 15px;
+    background: var(--background-light);
+    margin-top: 1rem;
+}
+
+.weather-header {
+    margin-bottom: 1rem;
+}
+
+.weather-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.temperature {
+    margin: 1.5rem 0;
+}
+
+.temp-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.temp-description {
+    display: block;
+    color: #64748b;
+    margin-top: 0.5rem;
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.detail span {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    color: #ef4444;
+}
+
+.app-footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0.5rem;
+    width: auto;
+}
+
+.theme-toggle:hover {
+    color: var(--primary-color);
+    background: transparent;
+    transform: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+    .weather-app {
+        padding: 1.5rem;
+    }
+    
+    .weather-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .temp-value {
+        font-size: 2.5rem;
+    }
+    
+    .weather-icon {
+        font-size: 3rem;
+    }
 }

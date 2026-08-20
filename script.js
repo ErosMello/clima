@@ -1,6 +1,6 @@
 // Configurações
 const CONFIG = {
-    API_KEY: '2a6f4684baf57c1fccf734b7dabaa6b9',
+    API_KEY: 'YOUR_OPENWEATHER_API_KEY',
     STORAGE_KEY: 'weatherAppRecent',
     MAX_RECENT: 5
 };

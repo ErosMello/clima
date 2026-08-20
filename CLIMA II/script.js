@@ -1,4 +1,4 @@
-const API_KEY = '2a6f4684baf57c1fccf734b7dabaa6b9';
+const API_KEY = 'YOUR_OPENWEATHER_API_KEY';
 
 const elements = {
   button: document.getElementById('search-button'),
